@@ -2,6 +2,33 @@ package BinarySearchTrees;
 
 public class BinarySearchTreeUse extends BinaryTreeUse{
 	private BinaryTreeNode<Integer>root;
+	private static BinaryTreeNode<Integer> getMin(BinaryTreeNode<Integer>root)
+	{
+		if(root==null)
+		{
+			return null;
+		}
+		root.left=getMin(root.left);
+		root.right=getMin(root.right);
+		
+		if(root.left.data>root.right.data)
+		{
+			if(root.left.data>root.data)
+			{
+				return root.left;
+			}
+			return root;
+		}
+		else
+		{
+			if(root.right.data>root.data)
+			{
+				return root.right;
+			}
+			return root;
+			
+		}
+	}
 	
 	private static BinaryTreeNode<Integer>insert(BinaryTreeNode<Integer>root,int element)
 	{
@@ -25,54 +52,36 @@ public class BinarySearchTreeUse extends BinaryTreeUse{
 	{
 		return insert(root,element);
 	}
-	private static BinaryTreeNode<Integer> findSuccessiveInorder(BinaryTreeNode<Integer>root)
-	{
-		if(root==null)
-		{
-			return null;
-		}
-		
-		findSuccessiveInorder(root.left)
-		findSuccessiveInorder(root.right)
-		
-	}
+	
 	private static BinaryTreeNode<Integer>delete(BinaryTreeNode<Integer>root,int element)
 	{
 		if(root==null)
 		{
 			return null;
 		}
-		else if(root.left==null && root.right==null && root.data==element)
-		{
-			root=null;
-			//return null;
-
-		}
-		else if(root.left!=null && root.right==null && root.data==element)
-		{
-			root.data=root.left.data;
-			root.left=null;
-			//return root;
-
-		}
-		else if(root.right!=null && root.left==null && root.data==element)
-		{
-			root.data=root.right.data;
-			root.right=null;
-			//return root;
-
-		}
-
 		else if(root.data<element)
+		{
+			root.left=delete(root.left, element);
+		}
+		else if(root.data>element)
 		{
 			root.right=delete(root.right, element);
 		}
 		else
 		{
-			root.left=delete(root.left, element);
+			if(root.left==null)
+			{
+				return root.right;
+			}
+			if(root.right==null)
+			{
+				return root.left;
+			}
+			BinaryTreeNode<Integer> min=getMin(root.right);
+			root.data=min.data;
+			root.right=delete(root.right, min.data);
 		}
 		return root;
-		
 	}
 	
 	public  BinaryTreeNode<Integer>delete(int element)
@@ -127,7 +136,7 @@ public class BinarySearchTreeUse extends BinaryTreeUse{
 		tr.root=tr.insert(3);
 		tr.root=tr.insert(4);
 		printBT(tr.root);
-		tr.root=tr.delete(3);
+		tr.root=tr.delete(1);
 		System.out.println(tr.isEmpty());
 		System.out.println(tr.size());
 		printBT(tr.root);
