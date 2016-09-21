@@ -1,4 +1,4 @@
-# One of my IMPLEMENTATIONS of a HASH TABLE Using Separate Chaining in this repository  got featured in [GeeksforGeeks](http://www.geeksforgeeks.org/) .Check it out here [GeeksforGeeks](http://www.geeksforgeeks.org/implementing-our-own-hash-table-with-separate-chaining-in-java/) :)
+# One of my IMPLEMENTATIONS of a HASH TABLE Using Separate Chaining in this repository  got featured in [GeeksforGeeks](http://www.geeksforgeeks.org/) .Check it out here [Hashtable on GfG](http://www.geeksforgeeks.org/implementing-our-own-hash-table-with-separate-chaining-in-java/) :)
 
 # Data-Structures
 Data Structures and Algorithms
