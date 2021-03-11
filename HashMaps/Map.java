@@ -44,6 +44,7 @@ public class Map<K,V> {
 	public V remove(K key)
 	{
 		int index=getBucketIndex(key);
+		index = index < 0 ? index * -1 : index;
 		HashNode<K, V>head=bucket.get(index);
 		if(head==null)
 		{
@@ -80,6 +81,7 @@ public class Map<K,V> {
 	{
 		
 		int index=getBucketIndex(key);
+		index = index < 0 ? index * -1 : index;
 		System.out.println(index);
 		HashNode<K, V>head=bucket.get(index);
 		HashNode<K, V>toAdd=new HashNode<>();
