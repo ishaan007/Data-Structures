@@ -25,7 +25,7 @@ public class Map<K,V> {
 	private int getBucketIndex(K key)
 	{
 		int hashCod=key.hashCode();
-		return hashCod%numBuckets;
+		return Math.abs(hashCod % numBuckets);
 	}
 	public V get(K key)
 	{
@@ -72,7 +72,6 @@ public class Map<K,V> {
 				prev=head;
 				head=head.next;
 			}
-			size--;
 			return null;
 		}
 	}
